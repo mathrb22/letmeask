@@ -1,0 +1,27 @@
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+:root {
+	//colors
+	--background-color: #f8f8f8;
+	--gray-color: #29292e;
+	--white-color: #fff;
+	--main-purple: #835afd;
+	--red-color: #ea4335;
+	--light-gray-color: #a8a8b3;
+}
+
+body {
+	background: var(--background-color);
+	color: var(--gray-color);
+}
+
+body,
+input,
+button,
+textarea {
+	font: 400 1rem 'Roboto', sans-serif;
+}
