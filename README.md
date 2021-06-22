@@ -1,5 +1,5 @@
 <div align="center">
-   <img alt="letmeask" src=".github/Logo.svg" width="30%"/>
+   <img alt="letmeask" src=".github/imagem-logo.png"/>
    <h3>Toda pergunta tem uma resposta.</h3>
 </div>
 <br/>
