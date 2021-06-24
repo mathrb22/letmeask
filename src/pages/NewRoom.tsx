@@ -1,16 +1,14 @@
-import { useContext } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import { Button } from '../components/Button';
-
 import illustrationImg from '../assets/images/illustration.svg';
 import logo from '../assets/images/logo.svg';
-import '../styles/auth.scss';
-import { AuthContext } from '../App';
 import { FiLogOut } from 'react-icons/fi';
+import '../styles/auth.scss';
+import { useAuth } from '../hooks/useAuth';
 
 export function NewRoom() {
 	const history = useHistory();
-	const { user, signOut } = useContext(AuthContext);
+	const { user, signOut } = useAuth();
 
 	async function handleSignOut() {
 		await signOut();

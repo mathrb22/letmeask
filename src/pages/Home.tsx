@@ -1,17 +1,15 @@
-import { useContext } from 'react';
 import { useHistory } from 'react-router-dom';
-
 import { Button } from '../components/Button';
 import illustrationImg from '../assets/images/illustration.svg';
 import logo from '../assets/images/logo.svg';
 import googleIconImg from '../assets/images/google-icon.svg';
-import '../styles/auth.scss';
-import { AuthContext } from '../App';
 import { FiLogIn } from 'react-icons/fi';
+import '../styles/auth.scss';
+import { useAuth } from '../hooks/useAuth';
 
 export function Home() {
 	const history = useHistory();
-	const { user, signInWithGoogle } = useContext(AuthContext);
+	const { user, signInWithGoogle } = useAuth();
 
 	async function handleCreateRoom() {
 		if (!user) {
