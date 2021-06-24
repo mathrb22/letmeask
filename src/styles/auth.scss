@@ -52,22 +52,21 @@
 			align-self: center;
 		}
 
-		// button#google {
-		// 	background: var(--red-color);
-		// 	color: #fff;
-		// 	height: 50px;
-		// 	border-radius: 8px;
-		// 	padding: 0 16px;
-		// 	display: flex;
-		// 	align-items: center;
-		// 	justify-content: space-evenly;
-		// }
+		span {
+			margin: 24px 0 0;
+		}
+
+		h2 {
+			font-size: 24px;
+			margin: 24px 0;
+			font-family: 'Poppins', sans-serif;
+		}
 
 		form {
 			input {
 				height: 50px;
 				border-radius: 8px;
-				padding: 0 32px;
+				padding: 0 20px;
 				background: #fff;
 				border: 1px solid var(--light-gray-color);
 				outline: none;
@@ -77,9 +76,29 @@
 				margin-top: 16px;
 			}
 
-			button,
-			input {
+			button[type='submit'],
+			input[type='text'] {
 				width: 100%;
+			}
+		}
+
+		.login-icon {
+			margin-right: 10px;
+		}
+
+		p {
+			font-size: 14px;
+			color: var(--p-color);
+			margin-top: 1rem;
+
+			a {
+				color: var(--secondary-pink);
+				text-decoration: none;
+				transition: filter ease-in-out 0.2s, text-decoration ease-in-out 0.2s;
+				&:hover {
+					filter: brightness(0.9);
+					text-decoration: underline;
+				}
 			}
 		}
 	}
