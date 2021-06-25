@@ -1,5 +1,5 @@
-.button {
-	margin-top: 64px;
+.button,
+.btn-outline {
 	height: 50px;
 	border-radius: 8px;
 	padding: 0 16px;
@@ -25,4 +25,11 @@
 		opacity: 0.6;
 		cursor: not-allowed;
 	}
+}
+
+.btn-outline {
+	height: 40px;
+	background: transparent;
+	color: var(--main-purple);
+	border: 1px solid var(--main-purple);
 }
