@@ -5,8 +5,6 @@ import { useAuth } from '../hooks/useAuth';
 import '../styles/room.scss';
 import { FiLogOut } from 'react-icons/fi';
 import { RoomCode } from '../components/RoomCode';
-import { FormEvent, useState } from 'react';
-import { database } from '../services/firebase';
 import { Question } from '../components/Question';
 import { useRoom } from '../hooks/useRoom';
 
@@ -14,46 +12,16 @@ type RoomParams = {
 	id: string;
 };
 
-export function Room() {
+export function AdminRoom() {
 	const params = useParams<RoomParams>();
-	const [newQuestion, setNewQuestion] = useState('');
 	const roomId = params.id;
 	const history = useHistory();
 	const { questions, title } = useRoom(roomId);
-	const { user, signOut, signInWithGoogle } = useAuth();
+	const { user, signOut } = useAuth();
 
 	async function handleSignOut() {
 		await signOut();
 		history.push('/');
-	}
-
-	async function handleSignIn() {
-		if (!user) {
-			await signInWithGoogle();
-		}
-	}
-
-	async function handleSendQuestion(event: FormEvent) {
-		event.preventDefault();
-		if (newQuestion.trim() === '') return;
-
-		if (!user) {
-			throw new Error('You must be logged in');
-		}
-
-		const question = {
-			author: {
-				name: user.name,
-				avatar: user.avatar,
-			},
-			content: newQuestion,
-			isHighlighted: false,
-			isAnswered: false,
-		};
-
-		await database.ref(`rooms/${roomId}/questions`).push(question);
-
-		setNewQuestion('');
 	}
 
 	return (
@@ -63,6 +31,7 @@ export function Room() {
 					<img src={logoImg} alt='Letmeask' />
 					<div className='menu'>
 						<RoomCode code={params.id} />
+						<Button isOutlined>Encerrar sala</Button>
 						{user && (
 							<div className='userAuthInfo'>
 								<img className='avatar' src={user?.avatar} alt='Avatar' />{' '}
@@ -80,31 +49,6 @@ export function Room() {
 					<h1>{title}</h1>
 					{questions.length > 0 && <span>{questions.length} pergunta(s)</span>}
 				</div>
-
-				<form onSubmit={handleSendQuestion}>
-					<textarea
-						placeholder='O que você quer perguntar?'
-						onChange={(event) => setNewQuestion(event.target.value)}
-						value={newQuestion}
-					/>
-
-					<div className='form-footer'>
-						{user ? (
-							<div className='user-info'>
-								<img src={user.avatar} alt={user.name} />
-								<span>{user.name}</span>
-							</div>
-						) : (
-							<span>
-								Para enviar uma pergunta,
-								<button onClick={handleSignIn}> faça seu login</button>
-							</span>
-						)}
-						<Button id='send-question' disabled={!user} type='submit'>
-							Enviar pergunta
-						</Button>
-					</div>
-				</form>
 
 				<div className='question-list'>
 					{questions.map((question) => {
