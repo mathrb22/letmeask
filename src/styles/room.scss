@@ -107,6 +107,24 @@
 				align-items: center;
 				margin-top: 16px;
 
+				.user-info {
+					display: flex;
+					align-items: center;
+					gap: 14px;
+
+					img {
+						width: 32px;
+						height: 32px;
+						border-radius: 9999px;
+					}
+
+					> span {
+						color: var(--gray-color);
+						font-weight: 500;
+						font-size: 14px;
+					}
+				}
+
 				span {
 					font-size: 14px;
 					color: var(--p-color);
