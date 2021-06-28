@@ -10,6 +10,8 @@
 
 	p {
 		color: var(--gray-color);
+		// word-break: break-all;
+		word-wrap: break-word;
 	}
 
 	footer {
@@ -32,6 +34,48 @@
 			span {
 				color: var(--p-color);
 				font-size: 14px;
+			}
+		}
+
+		> div {
+			display: flex;
+			gap: 16px;
+		}
+
+		button {
+			border: 0;
+			background: transparent;
+			cursor: pointer;
+
+			svg path {
+				transition: stroke ease-in-out 0.2s;
+			}
+
+			&.like-button {
+				display: flex;
+				align-items: flex-end;
+				color: var(--p-color);
+				gap: 8px;
+
+				&.liked {
+					color: var(--main-purple);
+
+					svg path {
+						stroke: var(--main-purple);
+					}
+				}
+			}
+
+			&:hover {
+				svg path {
+					stroke: var(--main-purple);
+				}
+			}
+
+			&.delete:hover {
+				svg path {
+					stroke: var(--red-danger);
+				}
 			}
 		}
 	}

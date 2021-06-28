@@ -28,8 +28,14 @@ export function Home() {
 		if (roomCode.trim() === '') return;
 
 		const roomRef = await database.ref(`rooms/${roomCode}`).get();
+
 		if (!roomRef.exists()) {
-			alert('Room does not exists!');
+			alert('Sala não encontrada! Verifique novamente o código da sala.');
+			return;
+		}
+
+		if (roomRef.val().endedAt) {
+			alert('Esta sala foi encerrada.');
 			return;
 		}
 
